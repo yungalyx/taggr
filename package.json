@@ -2,20 +2,40 @@
   "name": "taggr",
   "version": "0.1.0",
   "private": true,
+  "main": "public/main.js",
   "dependencies": {
+    "@blueprintjs/core": "^4.7.0",
+    "@blueprintjs/icons": "^4.4.0",
+    "@blueprintjs/popover2": "^1.5.0",
+    "@electron/remote": "^2.0.8",
+    "@ffmpeg/core": "^0.10.0",
+    "@ffmpeg/ffmpeg": "^0.9.8",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "^19.0.10",
+    "ffmetadata": "^1.7.0",
+    "fs": "^0.0.1-security",
+    "get-file-object-from-local-path": "^1.0.2",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "util": "^0.12.4",
+    "wait-on": "^6.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run start\" \"npm run electron:start\"",
+    "electron:start": "wait-on tcp:3000 && electron .",
+    "electron:build": "",
+    "electron-dev": "electron ."
   },
   "eslintConfig": {
     "extends": [
